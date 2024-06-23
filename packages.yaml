@@ -1,0 +1,74 @@
+base_packages:
+  - vim
+  - block-mount
+  - e2fsprogs
+  - fdisk
+  - parted
+  - losetup
+  - resize2fs
+  - tune2fs
+  - curl
+  - luci
+  - luci-app-firewall
+  - luci-app-opkg
+
+usb_packages:
+  - kmod-usb-net
+  - wireless-regdb
+  - kmod-usb-storage
+  - usbutils
+
+network_packages:
+  - luci-app-sqm
+  - sqm-scripts
+  - mwan3
+  - luci-app-mwan3
+
+vpn_packages:
+  - openvpn-openssl
+  - luci-app-openvpn
+
+dns_packages:
+  - https-dns-proxy
+  - luci-app-https-dns-proxy
+
+modem_packages:
+  - kmod-usb-net-qmi-wwan
+  - kmod-usb-net-cdc-mbim
+  - umbim
+  - uqmi
+  - luci-proto-qmi
+  - luci-proto-ncm
+
+wifi_packages:
+  - kmod-rt2800-usb
+  - kmod-rtl8192cu
+  - kmod-ath9k-htc
+  - kmod-carl9170
+
+tether_packages:
+  - kmod-usb-net-rndis
+  - kmod-usb-net-cdc-ether
+  - kmod-nls-base
+  - kmod-usb-core
+  - kmod-usb-ohci
+  - kmod-usb-uhci
+  - kmod-usb2
+  - kmod-usb3
+
+management_packages:
+  - luci-app-nlbwmon
+  - luci-app-wifischedule
+  - luci-app-watchcat
+
+wireguard_packages:
+  - wireguard-tools
+  - luci-app-wireguard
+
+filesharing_packages:
+  - luci-app-samba4
+
+monitoring_packages:
+  - luci-app-statistics
+  - collectd
+  - collectd-mod-thermal
