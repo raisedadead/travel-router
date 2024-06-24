@@ -64,24 +64,19 @@ jobs:
           wget https://downloads.openwrt.org/releases/${{ env.OPENWRT_VERSION }}/targets/bcm27xx/bcm2711/openwrt-imagebuilder-${{ env.OPENWRT_VERSION }}-bcm27xx-bcm2711.Linux-x86_64.tar.xz \
           && tar xJf openwrt-imagebuilder-${{ env.OPENWRT_VERSION }}-bcm27xx-bcm2711.Linux-x86_64.tar.xz
 
-      - name: Create partition expansion script
-        run: |
-          mkdir -p openwrt-imagebuilder-${{ env.OPENWRT_VERSION }}-bcm27xx-bcm2711.Linux-x86_64/files/usr/local/bin
-          mkdir -p openwrt-imagebuilder-${{ env.OPENWRT_VERSION }}-bcm27xx-bcm2711.Linux-x86_64/files/etc/uci-defaults
-          cp expand_root.sh openwrt-imagebuilder-${{ env.OPENWRT_VERSION }}-bcm27xx-bcm2711.Linux-x86_64/files/usr/local/bin/expand_root.sh
-          chmod +x openwrt-imagebuilder-${{ env.OPENWRT_VERSION }}-bcm27xx-bcm2711.Linux-x86_64/files/usr/local/bin/expand_root.sh
-          cp first_boot.sh openwrt-imagebuilder-${{ env.OPENWRT_VERSION }}-bcm27xx-bcm2711.Linux-x86_64/files/etc/uci-defaults/99-expand-root
-          chmod +x openwrt-imagebuilder-${{ env.OPENWRT_VERSION }}-bcm27xx-bcm2711.Linux-x86_64/files/etc/uci-defaults/99-expand-root
-
       - name: Load package lists
         run: |
-          packages=$(yq eval -o=json packages.yaml | jq -r 'to_entries | map(.value) | add | join(" ")') \
-          && echo "PACKAGES=$packages" >> $GITHUB_ENV
+          packages=$(yq eval -o=json packages.yaml | jq -r 'to_entries | map(.value) | add | join(" ")')
+          echo "Loaded packages: $packages"
+          echo "PACKAGES=$packages" >> $GITHUB_ENV
 
       - name: Build OpenWRT image
         run: |
-          cd openwrt-imagebuilder-${{ env.OPENWRT_VERSION }}-bcm27xx-bcm2711.Linux-x86_64 \
-          && make image PROFILE="rpi-4" PACKAGES="${{ env.PACKAGES }}" FILES="files"
+          cp .config openwrt-imagebuilder-${{ env.OPENWRT_VERSION }}-bcm27xx-bcm2711.Linux-x86_64/.config
+          mkdir -p  openwrt-imagebuilder-${{ env.OPENWRT_VERSION }}-bcm27xx-bcm2711.Linux-x86_64/files/
+          cp files/* openwrt-imagebuilder-${{ env.OPENWRT_VERSION }}-bcm27xx-bcm2711.Linux-x86_64/files/
+          cd openwrt-imagebuilder-${{ env.OPENWRT_VERSION }}-bcm27xx-bcm2711.Linux-x86_64
+          make image PROFILE="rpi-4" PACKAGES="${{ env.PACKAGES }}" FILES="files/"
 
       - name: Validate built images
         run: |

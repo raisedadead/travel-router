@@ -1,74 +1,79 @@
 base_packages:
-  - vim
-  - block-mount
-  - e2fsprogs
-  - fdisk
-  - parted
-  - losetup
-  - resize2fs
-  - tune2fs
-  - curl
-  - luci
-  - luci-app-firewall
-  - luci-app-opkg
+  - vim # Text editor
+  - curl # Command-line tool for transferring data with URLs
+  - wget # Command-line tool for retrieving files using HTTP, HTTPS, and FTP
+
+system_packages:
+  - block-mount # Mounting utility for block devices
+  - e2fsprogs # Utilities for managing ext2/3/4 filesystems
+  - fdisk # Disk partitioning tool
+  - parted # Disk partitioning utility
+  - losetup # Set up and control loop devices
+  - resize2fs # Resize ext2/3/4 filesystems
+  # - tune2fs           # Adjust tunable filesystem parameters
+  # - dumpe2fs          # Dump filesystem information
+  - kmod-fs-ext4 # Kernel module for ext4 filesystem
+  - luci # Web interface for OpenWrt
+  - luci-app-firewall # LuCI module for firewall configuration
+  - luci-app-opkg # LuCI module for package management
 
 usb_packages:
-  - kmod-usb-net
-  - wireless-regdb
-  - kmod-usb-storage
-  - usbutils
+  # - kmod-usb-storage # Remove this line
+  - kmod-usb-net # Kernel module for USB networking
+  - wireless-regdb # Regulatory database for wireless networks
+  - usbutils # USB device utilities
 
 network_packages:
-  - luci-app-sqm
-  - sqm-scripts
-  - mwan3
-  - luci-app-mwan3
+  - luci-app-sqm # LuCI module for Smart Queue Management
+  - sqm-scripts # Scripts for Smart Queue Management
+  - mwan3 # Multi-WAN manager
+  - luci-app-mwan3 # LuCI module for Multi-WAN management
 
 vpn_packages:
-  - openvpn-openssl
-  - luci-app-openvpn
+  - openvpn-openssl # OpenVPN with OpenSSL support
+  - luci-app-openvpn # LuCI module for OpenVPN configuration
 
 dns_packages:
-  - https-dns-proxy
-  - luci-app-https-dns-proxy
+  - https-dns-proxy # HTTPS DNS proxy
+  - luci-app-https-dns-proxy # LuCI module for HTTPS DNS proxy configuration
 
 modem_packages:
-  - kmod-usb-net-qmi-wwan
-  - kmod-usb-net-cdc-mbim
-  - umbim
-  - uqmi
-  - luci-proto-qmi
-  - luci-proto-ncm
+  - kmod-usb-net-qmi-wwan # Kernel module for QMI WWAN devices
+  - kmod-usb-net-cdc-mbim # Kernel module for CDC MBIM devices
+  - umbim # MBIM modem utility
+  - uqmi # QMI modem utility
+  - luci-proto-qmi # LuCI support for QMI protocol
+  - luci-proto-ncm # LuCI support for NCM protocol
 
 wifi_packages:
-  - kmod-rt2800-usb
-  - kmod-rtl8192cu
-  - kmod-ath9k-htc
-  - kmod-carl9170
+  - kmod-rt2800-usb # Kernel module for RT2800 USB WiFi devices
+  - kmod-rtl8192cu # Kernel module for RTL8192CU USB WiFi devices
+  - kmod-ath9k-htc # Kernel module for Atheros HTC USB WiFi devices
+  - kmod-carl9170 # Kernel module for AR9170 USB WiFi devices
 
 tether_packages:
-  - kmod-usb-net-rndis
-  - kmod-usb-net-cdc-ether
-  - kmod-nls-base
-  - kmod-usb-core
-  - kmod-usb-ohci
-  - kmod-usb-uhci
-  - kmod-usb2
-  - kmod-usb3
+  - kmod-usb-net-rndis # Kernel module for RNDIS USB network devices
+  - kmod-usb-net-cdc-ether # Kernel module for CDC Ethernet devices
+  - kmod-nls-base # Base kernel module for NLS
+  - kmod-usb-core # Core kernel module for USB support
+  - kmod-usb-ohci # Kernel module for OHCI USB controllers
+  - kmod-usb-uhci # Kernel module for UHCI USB controllers
+  - kmod-usb2 # Kernel module for USB 2.0 support
+  - kmod-usb3 # Kernel module for USB 3.0 support
 
 management_packages:
-  - luci-app-nlbwmon
-  - luci-app-wifischedule
-  - luci-app-watchcat
+  - luci-app-nlbwmon # LuCI module for network bandwidth monitoring
+  - luci-app-wifischedule # LuCI module for WiFi scheduling
+  - luci-app-watchcat # LuCI module for system monitoring and auto-reboot
 
 wireguard_packages:
-  - wireguard-tools
-  - luci-app-wireguard
+  - wireguard-tools # Tools for configuring WireGuard VPN
+  - luci-app-wireguard # LuCI module for WireGuard configuration
 
 filesharing_packages:
-  - luci-app-samba4
+  - luci-app-samba4 # LuCI module for Samba file sharing
 
 monitoring_packages:
-  - luci-app-statistics
-  - collectd
-  - collectd-mod-thermal
+  - luci-app-statistics # LuCI module for collecting and displaying statistics
+  - collectd # System statistics collection daemon
+  - collectd-mod-thermal # Collectd module for thermal monitoring
