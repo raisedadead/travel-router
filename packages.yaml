@@ -16,6 +16,8 @@ system_packages:
   - luci # Web interface for OpenWrt
   - luci-app-firewall # LuCI module for firewall configuration
   - luci-app-opkg # LuCI module for package management
+  - luci-compat # LuCI compatibility layer
+  - luci-lib-ipkg # LuCI support for ipkg
 
 usb_packages:
   # - kmod-usb-storage # Remove this line
