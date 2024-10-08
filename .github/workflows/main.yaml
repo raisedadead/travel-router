@@ -28,7 +28,7 @@ jobs:
           fetch-depth: 0
 
       - name: Cache OpenWRT Image Builder
-        uses: actions/cache@2cdf405574d6ef1f33a1d12acccd3ae82f47b3f2 # v4
+        uses: actions/cache@3624ceb22c1c5a301c8db4169662070a689d9ea8 # v4
         id: cache
         with:
           path:
@@ -97,7 +97,7 @@ jobs:
         run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@604373da6381bf24206979c74d06a550515601b9 # v4
+        uses: actions/upload-artifact@84480863f228bb9747b473957fcc9e309aa96097 # v4
         with:
           name:
             build-artifacts-${{ env.OPENWRT_VERSION }}-${{
